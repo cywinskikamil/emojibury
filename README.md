@@ -1,24 +1,35 @@
-# README
+# Action Cable Examples
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A collection of examples showcasing the capabilities of Action Cable.
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+You must have redis installed and running on the default port:6379 (or configure it in config/redis/cable.yml).
 
-* System dependencies
+### Installing Redis
+##### On Linux
+* `wget http://download.redis.io/redis-stable.tar.gz`
+* `tar xvzf redis-stable.tar.gz`
+* `cd redis-stable`
+* `make`
+* `make install`
 
-* Configuration
+##### On Mac
+* `brew install redis`
 
-* Database creation
+###### Note: You must have Ruby 2.2.2 installed in order to use redis
 
-* Database initialization
+## Starting the servers
 
-* How to run the test suite
+1. Run `./bin/setup`
+2. Run `./bin/cable`
+3. Open up a separate terminal and run: `./bin/rails server`
+4. One more terminal to run redis server: `redis-server`
+4. Visit `http://localhost:3000`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Live comments example
 
-* Deployment instructions
-
-* ...
+1. Open two browsers with separate cookie spaces (like a regular session and an incognito session). 
+2. Login as different people in each browser. 
+3. Go to the same message.
+4. Add comments in either browser and see them appear real-time on the counterpart screen.
