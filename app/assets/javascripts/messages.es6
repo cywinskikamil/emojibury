@@ -7,7 +7,10 @@ $(function () {
     });
 
     $('.emoji').on('click', function (event) {
-        Remote.messaging.sendMessage(event.target.innerText)
+        // Remote.messaging.sendMessage(event.target.innerText)
+        var hint = $('#hint')
+        hint.val(hint.val()+event.target.innerText)
+
     });
 
     $(Remote.messaging).on('received', function (event, data) {
