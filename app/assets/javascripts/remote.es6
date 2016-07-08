@@ -8,5 +8,9 @@ Remote.messaging = Remote.cable.subscriptions.create('MessagesChannel', {
   },
   sendMessage: function(messageBody) {
     this.perform('send_message', { body: messageBody });
+  },
+    
+  sendHint: function(messageBody) {
+    this.perform('send_hint', { body: messageBody });
   }
 });
