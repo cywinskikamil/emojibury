@@ -4,8 +4,11 @@ class MessagesChannel < ApplicationCable::Channel
   end
 
   def send_message(data)
+    p '-------asdasdasd--------asdasdasd--------asdasdasd--------asdasdasd--------asdasdasd---'
+    p data['hint']
     message = current_user.messages.create(body: data['body'])
     ActionCable.server.broadcast 'messages', { message: message,
+                                               hint: data['hint'],
                                                user: current_user }
   end
 

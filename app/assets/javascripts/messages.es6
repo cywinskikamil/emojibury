@@ -2,7 +2,7 @@ $(function () {
     $('#message-form').submit(function (event) {
         event.preventDefault();
         let $messageBody = $(this).find("textarea[name='message[body]']")
-        Remote.messaging.sendMessage($messageBody.val());
+        Remote.messaging.sendMessage($messageBody.val(), false);
         $messageBody.val(null);
     });
 
@@ -13,7 +13,7 @@ $(function () {
         var currentEmojis = hint.val() + event.target.innerText;
         hint.val(currentEmojis);
         console.log(currentEmojis)
-        Remote.messaging.sendHint(currentEmojis)
+        Remote.messaging.sendMessage(currentEmojis, true)
     });
 
     // $('#hint').on('change', function (event) {
@@ -35,7 +35,11 @@ $(function () {
 
         let {body: body, created_at: createdAt} = data.message;
         let {uid} = data.user;
-        let hint = data.hint;
+        let hint = data.message.hint;
+        console.log(data)
+        console.log(data.message)
+        console.log(data.message.hint)
+        console.log(data.hint)
         if (!hint) {
             let html = `<li class='messages-list-item'>
                   <div class='messages-list-item-name'>

@@ -6,11 +6,10 @@ Remote.messaging = Remote.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
     $(this).trigger('received', data);
   },
-  sendMessage: function(messageBody) {
-    this.perform('send_message', { body: messageBody });
-  },
-    
-  sendHint: function(messageBody) {
-    this.perform('send_hint', { body: messageBody });
-  }
+  sendMessage: function(messageBody, hint) {
+    this.perform('send_message', { body: messageBody, hint: hint});
+  }//,
+  // sendHint: function(messageBody) {
+  //   this.perform('send_hint', { body: messageBody });
+  // }
 });
